@@ -23,8 +23,8 @@ const App: React.FC = () => {
             <Route path="/query" element={<DocumentQuery />} />
             <Route path="/draft" element={<Draft />} />
             <Route path="/advocate-diary" element={<AdvocateDiary />} />
-            {/* <Route path="/login" element={<AuthPage />} />
-            <Route path="/signup" element={<AuthPage />} /> */}
+            <Route path="/login" element={<AuthPage />} />
+            <Route path="/signup" element={<AuthPage />} />
           </Routes>
         </div>
       </div>
