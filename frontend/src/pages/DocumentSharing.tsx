@@ -76,7 +76,7 @@ const DocumentSharing: React.FC = () => {
     const [walletConnected, setWalletConnected] = useState<boolean>(false);
     const [walletAddress, setWalletAddress] = useState<string>('');
     const [provider, setProvider] = useState<ethers.BrowserProvider | null>(null);
-    const [contract, setContract] = useState<ethers.Contract | null>(null);
+    const [_contract, setContract] = useState<ethers.Contract | null>(null);
     const [isLoadingFiles, setIsLoadingFiles] = useState<boolean>(false);
     const [showBlockchainLogs, setShowBlockchainLogs] = useState<boolean>(false);
     const [blockchainLogs, setBlockchainLogs] = useState<BlockchainLog[]>([]);
@@ -447,7 +447,7 @@ const DocumentSharing: React.FC = () => {
                             onClick={() => setShowBlockchainLogs(prev => !prev)}
                             className="flex items-center px-3 py-2 text-gray-600 rounded-md border border-gray-300"
                         >
-                            <Terminal className="w-4 h-4 mr-2" />
+                            <Terminal className="mr-2 w-4 h-4" />
                             {showBlockchainLogs ? 'Hide' : 'Show'} Logs
                         </motion.button>
                     </div>
@@ -464,22 +464,22 @@ const DocumentSharing: React.FC = () => {
                                 transition={{ duration: 0.3 }}
                                 className="border-b border-gray-200"
                             >
-                                <div className="p-4 bg-gray-800 text-white">
+                                <div className="p-4 text-white bg-gray-800">
                                     <div className="flex justify-between items-center mb-2">
-                                        <h3 className="text-lg font-semibold flex items-center">
-                                            <Terminal className="w-4 h-4 mr-2" />
+                                        <h3 className="flex items-center text-lg font-semibold">
+                                            <Terminal className="mr-2 w-4 h-4" />
                                             Blockchain Activity Logs
                                         </h3>
                                         <button
                                             onClick={() => setBlockchainLogs([])}
-                                            className="px-2 py-1 text-xs text-gray-300 hover:text-white border border-gray-600 rounded"
+                                            className="px-2 py-1 text-xs text-gray-300 rounded border border-gray-600 hover:text-white"
                                         >
                                             Clear Logs
                                         </button>
                                     </div>
-                                    <div className="bg-gray-900 rounded p-2 font-mono text-xs h-32 overflow-y-auto">
+                                    <div className="overflow-y-auto p-2 h-32 font-mono text-xs bg-gray-900 rounded">
                                         {blockchainLogs.length === 0 ? (
-                                            <div className="text-gray-500 italic">No blockchain activity recorded yet</div>
+                                            <div className="italic text-gray-500">No blockchain activity recorded yet</div>
                                         ) : (
                                             blockchainLogs.map((log, index) => (
                                                 <div key={index} className="mb-1">
@@ -519,7 +519,7 @@ const DocumentSharing: React.FC = () => {
                                 key="file-upload-component"
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="w-full mb-4"
+                                className="mb-4 w-full"
                             >
                                 <FileUpload
                                     walletAddress={walletAddress}

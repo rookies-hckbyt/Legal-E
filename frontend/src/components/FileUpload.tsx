@@ -1,6 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { useDropzone } from 'react-dropzone';
-import * as w3up from '@web3-storage/w3up-client';
 
 interface FileMetadata {
     fileName: string;
@@ -39,7 +38,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     const [client, setClient] = useState<any>(null);
     const [clientError, setClientError] = useState<string | null>(null);
     const [uploading, setUploading] = useState(false);
-    const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
+    const [_uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
     const [contractCallStatus, setContractCallStatus] = useState<{
         success: boolean;
         message: string;
@@ -90,7 +89,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
                 // Simulate the client functionality
                 const mockClient = {
-                    uploadFile: async (file: File) => {
+                    uploadFile: async (_file: File) => {
                         // Simulate upload delay
                         await new Promise(resolve => setTimeout(resolve, 2000));
 
@@ -231,15 +230,15 @@ const FileUpload: React.FC<FileUploadProps> = ({
     };
 
     return (
-        <div className="w-full max-w-2xl mx-auto">
+        <div className="mx-auto w-full max-w-2xl">
             {/* Debug toggle button */}
             <div className="flex justify-end mb-2">
                 <button
                     onClick={() => setShowDebugConsole(prev => !prev)}
-                    className="text-xs text-gray-500 flex items-center hover:text-gray-700"
+                    className="flex items-center text-xs text-gray-500 hover:text-gray-700"
                 >
                     <span className="mr-1">{showDebugConsole ? '🔽 Hide' : '🔼 Show'} Debug Console</span>
-                    <span className="inline-flex items-center justify-center w-4 h-4 ml-1 text-xs font-semibold rounded-full bg-gray-200">
+                    <span className="inline-flex justify-center items-center ml-1 w-4 h-4 text-xs font-semibold bg-gray-200 rounded-full">
                         {logs.length}
                     </span>
                 </button>
@@ -247,8 +246,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
             {/* Debug console */}
             {showDebugConsole && (
-                <div className="mb-4 border border-gray-300 rounded-md overflow-hidden">
-                    <div className="bg-gray-100 border-b border-gray-300 px-4 py-2 flex justify-between items-center">
+                <div className="overflow-hidden mb-4 rounded-md border border-gray-300">
+                    <div className="flex justify-between items-center px-4 py-2 bg-gray-100 border-b border-gray-300">
                         <div className="font-mono text-sm text-gray-700">Debug Console</div>
                         <button
                             onClick={() => setLogs([])}
@@ -257,9 +256,9 @@ const FileUpload: React.FC<FileUploadProps> = ({
                             Clear
                         </button>
                     </div>
-                    <div className="bg-gray-900 text-gray-100 font-mono text-xs p-2 h-48 overflow-y-auto">
+                    <div className="overflow-y-auto p-2 h-48 font-mono text-xs text-gray-100 bg-gray-900">
                         {logs.length === 0 ? (
-                            <div className="text-gray-500 italic">No logs yet</div>
+                            <div className="italic text-gray-500">No logs yet</div>
                         ) : (
                             logs.map((log, index) => (
                                 <div key={index} className="mb-1">
@@ -291,16 +290,16 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
             {/* Client error message */}
             {clientError && (
-                <div className="mb-4 p-3 bg-yellow-50 text-yellow-800 rounded border border-yellow-200">
+                <div className="p-3 mb-4 text-yellow-800 bg-yellow-50 rounded border border-yellow-200">
                     <p>{clientError}</p>
-                    <p className="text-xs mt-1">Using simulated IPFS functionality.</p>
+                    <p className="mt-1 text-xs">Using simulated IPFS functionality.</p>
                 </div>
             )}
 
             {/* Dropzone */}
             <div
                 {...getRootProps()}
-                className={`border-2 border-dashed p-6 rounded-lg text-center cursor-pointer transition-colors ${isDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300 hover:border-gray-400'
+                className={`border-2 border-dashed p-6 rounded-lg text-center cursor-pointer transition-colors ${isDragActive ? 'bg-blue-50 border-blue-500' : 'border-gray-300 hover:border-gray-400'
                     } ${!isWalletConnected || !client ? 'opacity-50' : ''}`}
             >
                 <input {...getInputProps()} disabled={!isWalletConnected || !client} />
@@ -310,13 +309,13 @@ const FileUpload: React.FC<FileUploadProps> = ({
                     <p className="text-blue-500">Drop the file here...</p>
                 ) : (
                     <div>
-                        <p className="text-gray-500 mb-2">Drag and drop a file here, or click to select</p>
+                        <p className="mb-2 text-gray-500">Drag and drop a file here, or click to select</p>
                         <p className="text-xs text-gray-400">Supported formats: PDF, DOC, DOCX, TXT</p>
                         {!isWalletConnected && (
-                            <p className="text-xs text-red-500 mt-2">Please connect your wallet to upload files</p>
+                            <p className="mt-2 text-xs text-red-500">Please connect your wallet to upload files</p>
                         )}
                         {!client && isWalletConnected && (
-                            <p className="text-xs text-yellow-500 mt-2">Initializing upload service...</p>
+                            <p className="mt-2 text-xs text-yellow-500">Initializing upload service...</p>
                         )}
                     </div>
                 )}
@@ -328,7 +327,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                     }`}>
                     <p>{contractCallStatus.message}</p>
                     {contractCallStatus.txHash && (
-                        <p className="text-sm mt-1">
+                        <p className="mt-1 text-sm">
                             🔗 TX Hash: <span className="font-mono">{contractCallStatus.txHash.substring(0, 10)}...</span>
                         </p>
                     )}
