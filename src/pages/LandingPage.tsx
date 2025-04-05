@@ -12,9 +12,9 @@ import {
 } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeFeature, setActiveFeature] = useState(0);
-
+  const [_isVisible, setIsVisible] = useState(false);
+  const [_activeFeature, setActiveFeature] = useState(0);
+  
   useEffect(() => {
     setIsVisible(true);
     const interval = setInterval(() => {
@@ -55,19 +55,19 @@ const LandingPage: React.FC = () => {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="container mx-auto px-4 pt-20 pb-32"
+          className="container px-4 pt-20 pb-32 mx-auto"
         >
-          <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+          <div className="flex flex-col items-center max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="bg-primary/10 p-3 rounded-full mb-6"
+              className="p-3 mb-6 rounded-full bg-primary/10"
             >
               <Scale className="w-10 h-10 text-primary" />
             </motion.div>
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent"
+              className="mb-6 text-5xl font-bold text-transparent md:text-7xl bg-gradient-to-r from-primary to-primary-dark bg-clip-text"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -75,7 +75,7 @@ const LandingPage: React.FC = () => {
               Legal Innovation Meets Artificial Intelligence
             </motion.h1>
             <motion.p 
-              className="text-xl text-gray-600 mb-8"
+              className="mb-8 text-xl text-gray-600"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -89,10 +89,10 @@ const LandingPage: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
-              <button className="btn btn-primary px-8 py-3 rounded-full flex items-center gap-2">
+              <button className="flex items-center gap-2 px-8 py-3 rounded-full btn btn-primary">
                 Get Started <ArrowRight className="w-4 h-4" />
               </button>
-              <button className="btn btn-outline px-8 py-3 rounded-full">
+              <button className="px-8 py-3 rounded-full btn btn-outline">
                 Watch Demo
               </button>
             </motion.div>
@@ -105,7 +105,7 @@ const LandingPage: React.FC = () => {
           {Array.from({ length: 20 }).map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 bg-primary/20 rounded-full"
+              className="absolute w-2 h-2 rounded-full bg-primary/20"
               initial={{ 
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight 
@@ -126,9 +126,9 @@ const LandingPage: React.FC = () => {
 
       {/* Features Section */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container px-4 mx-auto">
           <motion.div 
-            className="grid md:grid-cols-3 gap-8"
+            className="grid gap-8 md:grid-cols-3"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -136,16 +136,16 @@ const LandingPage: React.FC = () => {
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                className="p-6 transition-shadow bg-white shadow-lg rounded-xl hover:shadow-xl"
                 whileHover={{ scale: 1.02 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
               >
-                <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-lg bg-primary/10">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
               </motion.div>
             ))}
@@ -155,9 +155,9 @@ const LandingPage: React.FC = () => {
 
       {/* Statistics Section */}
       <section className="py-20 bg-primary/5">
-        <div className="container mx-auto px-4">
+        <div className="container px-4 mx-auto">
           <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="grid grid-cols-2 gap-8 md:grid-cols-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -171,7 +171,7 @@ const LandingPage: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                <div className="mb-2 text-4xl font-bold text-primary">{stat.value}</div>
                 <div className="text-gray-600">{stat.label}</div>
               </motion.div>
             ))}
@@ -181,15 +181,15 @@ const LandingPage: React.FC = () => {
 
       {/* Benefits Section */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container px-4 mx-auto">
           <motion.div 
-            className="grid md:grid-cols-2 gap-12 items-center"
+            className="grid items-center gap-12 md:grid-cols-2"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
             <div>
-              <h2 className="text-4xl font-bold mb-6">Why Choose Legal AI?</h2>
+              <h2 className="mb-6 text-4xl font-bold">Why Choose Legal AI?</h2>
               <div className="space-y-4">
                 {[
                   { icon: <Clock />, text: "Save up to 70% of your time on legal research" },
@@ -217,7 +217,7 @@ const LandingPage: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl overflow-hidden">
+              <div className="absolute inset-0 overflow-hidden bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl">
                 {/* Add your image or animation here */}
               </div>
             </motion.div>
@@ -227,17 +227,17 @@ const LandingPage: React.FC = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container px-4 mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Legal Practice?</h2>
-            <p className="text-white/80 mb-8 max-w-2xl mx-auto">
+            <h2 className="mb-6 text-4xl font-bold text-white">Ready to Transform Your Legal Practice?</h2>
+            <p className="max-w-2xl mx-auto mb-8 text-white/80">
               Join thousands of legal professionals who are already using Legal AI to streamline their practice.
             </p>
-            <button className="btn bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-full">
+            <button className="px-8 py-3 bg-white rounded-full btn text-primary hover:bg-gray-100">
               Start Free Trial
             </button>
           </motion.div>
@@ -245,19 +245,19 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
+      <footer className="py-12 text-white bg-gray-900">
+        <div className="container px-4 mx-auto">
+          <div className="grid gap-8 md:grid-cols-4">
             <div>
-              <Scale className="w-10 h-10 text-primary mb-4" />
+              <Scale className="w-10 h-10 mb-4 text-primary" />
               <p className="text-gray-400">Empowering legal professionals with next-generation AI technology.</p>
             </div>
             {['Product', 'Company', 'Resources', 'Legal'].map((section, index) => (
               <div key={index}>
-                <h3 className="font-semibold mb-4">{section}</h3>
+                <h3 className="mb-4 font-semibold">{section}</h3>
                 <ul className="space-y-2 text-gray-400">
                   {Array.from({ length: 4 }).map((_, i) => (
-                    <li key={i} className="hover:text-primary cursor-pointer">
+                    <li key={i} className="cursor-pointer hover:text-primary">
                       {section} Link {i + 1}
                     </li>
                   ))}
@@ -265,8 +265,8 @@ const LandingPage: React.FC = () => {
               </div>
             ))}
           </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            © 2024 Legal-E. All rights reserved.
+          <div className="pt-8 mt-12 text-center text-gray-400 border-t border-gray-800">
+            © 2024 Legal AI. All rights reserved.
           </div>
         </div>
       </footer>
