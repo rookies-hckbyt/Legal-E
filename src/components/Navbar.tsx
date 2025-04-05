@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
                 transition={{ delay: 0.2 }}
                 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-dark"
               >
-                Legal AI
+                Legal-E
               </motion.span>
             </Link>
 

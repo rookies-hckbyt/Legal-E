@@ -189,7 +189,7 @@ const LandingPage: React.FC = () => {
             viewport={{ once: true }}
           >
             <div>
-              <h2 className="mb-6 text-4xl font-bold">Why Choose Legal AI?</h2>
+              <h2 className="mb-6 text-4xl font-bold">Why Choose Legal-E?</h2>
               <div className="space-y-4">
                 {[
                   { icon: <Clock />, text: "Save up to 70% of your time on legal research" },
@@ -235,7 +235,7 @@ const LandingPage: React.FC = () => {
           >
             <h2 className="mb-6 text-4xl font-bold text-white">Ready to Transform Your Legal Practice?</h2>
             <p className="max-w-2xl mx-auto mb-8 text-white/80">
-              Join thousands of legal professionals who are already using Legal AI to streamline their practice.
+              Join thousands of legal professionals who are already using Legal-E to streamline their practice.
             </p>
             <button className="px-8 py-3 bg-white rounded-full btn text-primary hover:bg-gray-100">
               Start Free Trial
