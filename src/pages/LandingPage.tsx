@@ -244,7 +244,8 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer */}
+
+      {/* Footer*/}
       <footer className="py-12 text-white bg-gray-900">
         <div className="container px-4 mx-auto">
           <div className="grid gap-8 md:grid-cols-4">
@@ -266,7 +267,7 @@ const LandingPage: React.FC = () => {
             ))}
           </div>
           <div className="pt-8 mt-12 text-center text-gray-400 border-t border-gray-800">
-            © 2024 Legal AI. All rights reserved.
+            © 2024 LegalE. All rights reserved.
           </div>
         </div>
       </footer>
