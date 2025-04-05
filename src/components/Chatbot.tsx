@@ -73,7 +73,7 @@ interface Message {
   sender: 'user' | 'ai';
 }
 
-const legaleChatbot: React.FC = () => {
+const LegalAIChatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -166,7 +166,7 @@ const legaleChatbot: React.FC = () => {
                   AI
                 </div>
                 <div>
-                  <h3 className="font-semibold text-md">Legal-E Assistant</h3>
+                  <h3 className="font-semibold text-md">Legal AI Assistant</h3>
                   <p className="text-sm text-secondary">Your legal guide</p>
                 </div>
               </div>
@@ -273,4 +273,4 @@ const legaleChatbot: React.FC = () => {
   );
 };
 
-export default legaleChatbot;
+export default LegalAIChatbot;
