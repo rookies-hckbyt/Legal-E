@@ -29,7 +29,7 @@ const AdvocateDiary: React.FC = () => {
     if (storedReminders) setReminders(JSON.parse(storedReminders));
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { 
     localStorage.setItem('cases', JSON.stringify(cases));
     localStorage.setItem('reminders', JSON.stringify(reminders));
   }, [cases, reminders]);
