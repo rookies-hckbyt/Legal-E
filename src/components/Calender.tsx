@@ -58,7 +58,7 @@ const Calendar: React.FC<CalendarProps> = ({ customEvents }) => {
             date: new Date(2024, 5, 22).toISOString(), // June 22
             title: 'Civil Litigation Hearing',
             time: '2:30 PM',
-            type: 'hearing'
+            type:  'hearing'
           },
           {
             date: new Date(2024, 5, 28).toISOString(), // June 28
